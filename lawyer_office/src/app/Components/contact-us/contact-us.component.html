@@ -1,0 +1,21 @@
+<form (ngSubmit)="onSubmit()" #contactForm="ngForm" action="/action_page.php">
+    <div>
+  <div class="mb-3 mt-3">
+    <label class="form-label">Name </label>
+    <input type="text" name="name"  class="form-control" required [(ngModel)]="contactus.name" #trackName="ngModel">
+    <p class="alert" *ngIf="!trackName.valid && trackName.touched">The name is required</p>
+  </div>
+    <br />
+    <label class="form-label">typeofservice</label>
+    <select name="typeofservice" class="form-control" required [(ngModel)]="contactus.typeofservice">
+      <option *ngFor="let item of typeofservice" [value]="typeofservice">{{item}}</option>
+    </select>
+    <label class="form-label">תוכן הפנייה</label>
+    <input type="text" name="text" class="form-control" required [(ngModel)]="contactus.text">
+    <input type="submit" value="Save" class="form-control" [disabled]="!contactForm.form.valid" >
+</div>
+
+  </form>
+  <pre>{{ getCurrentModel() }}</pre>
+  
+

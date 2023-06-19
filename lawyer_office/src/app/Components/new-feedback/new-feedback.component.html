@@ -1,0 +1,105 @@
+
+<div class="container">
+  <legend>Job Portal</legend>
+  <div class="row">
+    <div class="col col-md-8" style="overflow-y: scroll; max-height: 100vh">
+      <form [formGroup]="FeedbackForm" (ngSubmit)="save()">
+        <div class="mb-3">
+          <label for="firstName" class="form-label">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            formControlName="firstName"
+          />
+        </div>
+        <div
+class="alert alert-danger"
+*ngIf="
+  firstName?.invalid && (firstName?.touched || firstName?.dirty)">
+<div *ngIf="firstName?.errors?.['required']">
+  First Name can't be emtpy
+</div>
+</div>
+        <div class="mb-3">
+          <label for="discription" class="form-label">contain of feedback</label>
+          <input
+            type="text"
+            class="form-control"
+            id="discription"
+            formControlName="discription"
+          />
+        </div>
+        <div
+class="alert alert-danger"
+*ngIf="
+  discription?.invalid && (discription?.touched || discription?.dirty)
+"
+>
+<div *ngIf="discription?.errors?.['required']">
+  contain of feedback can't be emtpy
+</div>
+</div>
+        <div class="mb-3" formGroupName="contacts">
+          <div class="row">
+            <div class="col col-md-4 offset-md-4">
+              <div class="mb-3">
+                <label class="form-label">Prefered Contact</label>
+                <select
+                  class="form-select"
+                  formControlName="contactType"
+                  aria-label="Default select example"
+                >
+                  <option value="-1">-select-</option>
+                  <option value="email">Email</option>
+                  <option value="phone">Phone</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-md-6">
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  formControlName="email"
+                />
+              </div>
+            </div>
+            <div
+class="alert alert-danger"
+*ngIf="
+  email?.invalid && (email?.touched || email?.dirty)
+"
+>
+<div *ngIf="!email?.errors?.['email']">
+  not valid Email
+</div>
+</div>
+            <div class="col col-md-6">
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="phone"
+                  formControlName="phone"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit"  value="Save" [disabled]="!FeedbackForm.valid" class="btn btn-primary">Submit</button>
+       
+      </form>
+    </div>
+    <div class="col col-md-4">
+      <div style="position: fixed">{{ preview }}</div>
+    </div>
+  </div>
+
+</div>
+

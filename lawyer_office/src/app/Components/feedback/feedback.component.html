@@ -1,0 +1,59 @@
+<!-- 
+    <h1>{{item.id}}</h1> 
+    <h2>{{item.name  | pipeUser}}</h2>
+    <h2>{{item.discription}}</h2>
+    <p>{{item.sum}}</p>
+    <button (click)="addLike(item)">like❤ </button>
+ 
+
+</div>
+
+<div class="alert alert-danger" *ngIf="error">{{error}}</div>
+<div class="alert alert-success" *ngIf="success">{{success}}</div>
+
+
+
+---------------------------- -->
+<div *ngFor="let item of FeedbackList">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- <title>Bootstrap Example</title> -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div id="imgbackground">
+<div class="container mt-3">
+    <h2></h2> 
+  <div class="card" style="width:400px">
+    <!-- <img class="card-img-bottom" src="../img/download.jpg"  style="width:100%"> -->
+    <div class="card-body">
+      <h4 class="card-title">{{item.name  | pipeUser}}</h4>
+      <p class="card-text">{{item.discription}}</p>
+      <button   class="btn btn-primary"(click)="addLike(item)">like❤  {{item.sum}} </button>
+      <!-- <a href="#" class="btn btn-primary">more details</a> -->
+    </div>
+   
+  </div></div>
+  <br>
+  <style> 
+  .card-body{
+   border: 5px;
+   border-color: black;
+   border-style: groove;
+    
+  }
+  .btn{
+    background-color: black;
+  }
+</style>
+
+
+</div>
+</body>
+</html></div>
+<router-outlet></router-outlet>
+<input type="button"  value="add feedback" (click)="openForm()">
